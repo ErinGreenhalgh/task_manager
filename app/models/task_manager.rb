@@ -1,6 +1,4 @@
 require 'yaml/store'
-#allows us to store data in a specific file using YAML format,
-#part of the Ruby standard library
 require_relative 'task'
 
 class TaskManager
@@ -11,11 +9,10 @@ class TaskManager
   end
 
   def create(task)
-    #accepts a task hash ie params[:task]
     database.transaction do
-      database['tasks'] ||= [] #find ['tasks'], if it DNE, create an empty array
-      database['total'] ||= 0 #find database['total'] or assign it to zero
-      database['total'] += 1 #increase count by one every time a new task is added
+      database['tasks'] ||= []
+      database['total'] ||= 0
+      database['total'] += 1
       database['tasks'] << {"id" => database['total'], "title" => task[:title],
       "description" => task[:description]}
     end

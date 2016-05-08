@@ -3,8 +3,6 @@ require 'models/task'
 
 class TaskManagerApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
-  #specifies that the root is app
-  #b/c sinatra looks relative to our app for views and stylesheets
 
   get '/' do
     erb :dashboard
@@ -13,7 +11,6 @@ class TaskManagerApp < Sinatra::Base
   get '/tasks' do
     @tasks = task_manager.all
     erb :index
-    #render index.erb file
   end
 
   get '/tasks/new' do
@@ -28,7 +25,7 @@ class TaskManagerApp < Sinatra::Base
   get '/tasks/:id' do |id|
     @task = task_manager.find(id.to_i)
     erb :show
-  end 
+  end
 
   def task_manager
     database = YAML::Store.new('db/task_manager')
