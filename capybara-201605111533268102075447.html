@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/application.css">
+  <title>Task Manager</title>
+</head>
+<body>
+  <div class="container">
+    <h1>All Tasks</h1>
+
+  <h3>2: <a href="/tasks/2">go to the store</a></h3>
+  <a href="/tasks/2/edit">Edit</a>
+
+  <form action="/tasks/2" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete">
+  </form>
+  <h3>3: <a href="/tasks/3">drive around</a></h3>
+  <a href="/tasks/3/edit">Edit</a>
+
+  <form action="/tasks/3" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete">
+  </form>
+  <h3>4: <a href="/tasks/4">Mod 2</a></h3>
+  <a href="/tasks/4/edit">Edit</a>
+
+  <form action="/tasks/4" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete">
+  </form>
+
+  </div>
+</body>
+</html>
