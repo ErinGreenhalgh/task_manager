@@ -8,12 +8,12 @@ require 'minitest/pride'
 require 'tilt/erb'
 
 module TestHelper
-  def tear_down
+  def teardown
     task_manager.delete_all
-    super
     #if super class holds this method, inherit this functionality
     #this method is the minitest teardown method with the
-    #added functionality that we defined 
+    #added functionality that we defined
+    super
   end
 
   def task_manager
