@@ -1,8 +1,4 @@
-require 'bundler'
-Bundler.require
-
-$LOAD_PATH.unshift(File.expand_path("app", __dir__))
-
-require 'controllers/task_manager_app'
-
+require File.expand_path('../config/environment', __File__)
+#requires environment file that requires all the other files
+#then run task manager app
 run TaskManagerApp
