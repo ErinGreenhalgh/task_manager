@@ -1,5 +1,4 @@
 require 'yaml/store'
-require_relative 'task'
 
 class TaskManager
   attr_reader :database
@@ -34,6 +33,24 @@ class TaskManager
 
   def find(id)
     Task.new(raw_task(id))
+  end
+
+  def update(id, task)
+    #interact with db to change values
+    database.transaction do
+      target_task = database['tasks'].find { |data| data["id"] == id }
+      target_task['title'] = task[:title]
+      target_task['description'] = task[:description]
+    end
+    #changing values inside database; YAML is accessed like a hash
+    #don't care about the Task object at this point;
+    #it will be created when the user wants to see it
+  end
+
+  def destroy(id)
+    database.transaction do
+      database["tasks"].delete_if {|task| task["id"] == id }
+    end
   end
 
 end

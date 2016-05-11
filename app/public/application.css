@@ -1,0 +1,44 @@
+* {
+  background-color: white;
+}
+
+h1, h2, h3 {
+  font-family: Avenir;
+  width: 100%;
+  text-align: center;
+  /*padding: 10px;*/
+}
+
+h1 {
+  /*background-color: #E8AC4F*/
+  background-color: white;
+
+}
+
+ul {
+  width: 100%;
+  text-align: center;
+}
+
+li {
+  text-align: left;
+  font-family: Avenir;
+  font-weight: light;
+  font-size: 20px;
+}
+
+div {
+  /*background-color: #E8AC4F;*/
+  background-color: white;
+  width: 100%;
+  /*margin: 15px;*/
+  text-align: center;
+}
+
+div.body {
+  background-color: white;
+  padding: 15px;
+  text-align: left;
+  margin-left: 15%;
+  margin-right: 15%;
+}

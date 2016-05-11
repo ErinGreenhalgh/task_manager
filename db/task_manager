@@ -1,15 +1,12 @@
 ---
 tasks:
-- id: 1
-  title: Complete Task Manager
-  description: do the stuff
 - id: 2
   title: go to the store
   description: get the stuff
 - id: 3
   title: drive around
-  description: see stuff
+  description: see all the stuff!!
 - id: 4
   title: Mod 2
   description: let's goooooooo!
-total: 4
+total: 5
