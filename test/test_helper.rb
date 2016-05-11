@@ -15,4 +15,6 @@ module TestHelper
     database = YAML::Store.new('db/task_manager_test')
     @task_manager ||= TaskManager.new(database)
   end
+
+
 end
