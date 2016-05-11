@@ -36,15 +36,11 @@ class TaskManager
   end
 
   def update(id, task)
-    #interact with db to change values
     database.transaction do
       target_task = database['tasks'].find { |data| data["id"] == id }
       target_task['title'] = task[:title]
       target_task['description'] = task[:description]
     end
-    #changing values inside database; YAML is accessed like a hash
-    #don't care about the Task object at this point;
-    #it will be created when the user wants to see it
   end
 
   def destroy(id)
@@ -56,7 +52,7 @@ class TaskManager
   def delete_all
     database.transaction do
       database['tasks'] = []
-      database['total'] = 0  
+      database['total'] = 0
     end
   end
 
