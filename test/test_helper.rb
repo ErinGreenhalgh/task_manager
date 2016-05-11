@@ -10,6 +10,10 @@ require 'tilt/erb'
 module TestHelper
   def tear_down
     task_manager.delete_all
+    super
+    #if super class holds this method, inherit this functionality
+    #this method is the minitest teardown method with the
+    #added functionality that we defined 
   end
 
   def task_manager
