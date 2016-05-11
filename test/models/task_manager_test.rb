@@ -33,20 +33,16 @@ class TaskManagerTest < Minitest::Test
 
   def test_it_can_update_a_task
     task_manager.create({title: "TDD", description: "Learn to Test"})
-    task = task_manager.find(1)
-    assert_equal "TDD", task.title
-    task_manager.update(1, {title: "Let's Gooo", description: "Learn to Test"})
+    task_manager.update(1, {title: "UPDATED", description: "Learn to Test"})
     task_updated = task_manager.find(1)
-    assert_equal "Let's Gooo", task_updated.title
-    #could be refactored, don't need intermediate steps
-    #use explicit changes; TDD=> UPDATED TITLE
+    assert_equal "UPDATED", task_updated.title
   end
 
   def test_it_can_destroy_a_task
     task_manager.create({title: "TDD", description: "Learn to Test"})
     assert_equal 1, task_manager.all.count
     task_manager.destroy(1)
-    assert_equal 0, task_manager.all.count 
+    assert_equal 0, task_manager.all.count
   end
 
 end
