@@ -10,6 +10,7 @@ class TaskManager
   def create(task)
     table.insert(title: task[:title], description: task[:description])
     #functionality for creating unique ids is built into sequel
+    #reutrns the primary key of what was created
   end
 
   def table
@@ -55,7 +56,7 @@ class TaskManager
     #   database['tasks'] = []
     #   database['total'] = 0
     # end
-    
+    table.delete
   end
 
 end

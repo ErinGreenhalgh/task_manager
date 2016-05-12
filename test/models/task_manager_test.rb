@@ -4,11 +4,12 @@ class TaskManagerTest < Minitest::Test
   include TestHelper
 
   def test_it_creates_a_task
-    task_manager.create({title: "TDD", description: "Learn to Test"})
-    task = task_manager.find(1)
+    task_id = task_manager.create({title: "TDD", description: "Learn to Test"})
+    #create returns the primary key value of what was created
+    task = task_manager.find(task_id)
     assert_equal "TDD", task.title
     assert_equal "Learn to Test", task.description
-    assert_equal 1, task.id
+    assert_equal task_id, task.id
   end
 
   def test_it_can_find_all_the_tasks
