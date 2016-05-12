@@ -1,4 +1,3 @@
-require 'yaml/store'
 
 class TaskManager
   attr_reader :database
@@ -38,17 +37,21 @@ class TaskManager
   end
 
   def update(id, task)
-    database.transaction do
-      target_task = database['tasks'].find { |data| data["id"] == id }
-      target_task['title'] = task[:title]
-      target_task['description'] = task[:description]
-    end
+    # database.transaction do
+    #   target_task = database['tasks'].find { |data| data["id"] == id }
+    #   target_task['title'] = task[:title]
+    #   target_task['description'] = task[:description]
+    # end
+    table.where(:id => id).update(task)
+
+    #pass task b.c it is a hash
   end
 
   def destroy(id)
-    database.transaction do
-      database["tasks"].delete_if {|task| task["id"] == id }
-    end
+    # database.transaction do
+    #   database["tasks"].delete_if {|task| task["id"] == id }
+    # end
+    table.where(:id => id).delete
   end
 
   def delete_all
