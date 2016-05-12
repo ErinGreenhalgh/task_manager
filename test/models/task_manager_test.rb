@@ -20,6 +20,7 @@ class TaskManagerTest < Minitest::Test
     tasks = task_manager.all
     assert_equal 3, tasks.count
     assert_equal "TDD", tasks.first.title
+    #should also test "Learn to Test", tasks.first.description
   end
 
   def test_it_can_find_a_single_task

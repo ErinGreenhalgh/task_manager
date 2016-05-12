@@ -29,7 +29,7 @@ class TaskManager
 
   def raw_task(id)
     # raw_tasks.find { |task| task["id"] == id}
-    table.where(:id => id).to_a[0]
+    locate_task(id).to_a[0]
   end
 
   def find(id)
@@ -42,7 +42,7 @@ class TaskManager
     #   target_task['title'] = task[:title]
     #   target_task['description'] = task[:description]
     # end
-    table.where(:id => id).update(task)
+    locate_task(id).update(task)
 
     #pass task b.c it is a hash
   end
@@ -51,7 +51,7 @@ class TaskManager
     # database.transaction do
     #   database["tasks"].delete_if {|task| task["id"] == id }
     # end
-    table.where(:id => id).delete
+    locate_task(id).delete
   end
 
   def delete_all
@@ -60,6 +60,10 @@ class TaskManager
     #   database['total'] = 0
     # end
     table.delete
+  end
+
+  def locate_task(id)
+    table.where(:id => id)
   end
 
 end

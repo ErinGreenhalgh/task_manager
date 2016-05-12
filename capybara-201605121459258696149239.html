@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/application.css">
+  <title>Task Manager</title>
+</head>
+<body>
+  <div class="container">
+    <h1>All Tasks</h1>
+
+  <h3>61: <a href="/tasks/61">Task1</a></h3>
+  <a href="/tasks/61/edit">Edit</a>
+
+  <form action="/tasks/61" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete">
+  </form>
+  <h3>62: <a href="/tasks/62">Task2</a></h3>
+  <a href="/tasks/62/edit">Edit</a>
+
+  <form action="/tasks/62" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete">
+  </form>
+
+  </div>
+</body>
+</html>

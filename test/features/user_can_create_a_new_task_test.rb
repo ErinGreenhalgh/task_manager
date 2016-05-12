@@ -7,8 +7,8 @@ class UserCanCreateANewTaskTest < FeatureTest
 
     click_link 'New Task'
 
-    assert_equal 'tasks/new', current_path
-    #check if you are on the right path 
+    assert_equal '/tasks/new', current_path
+    #check if you are on the right path
 
     fill_in 'task[title]', with: "Learn Capybara"
     #select by name, can also select by label
