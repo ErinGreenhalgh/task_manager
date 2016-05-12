@@ -13,7 +13,7 @@ module TestHelper
   end
 
   def task_manager
-    database = YAML::Store.new('db/task_manager_test')
+    database = Sequel.postgres('task_manager_test')
     @task_manager ||= TaskManager.new(database)
   end
 end

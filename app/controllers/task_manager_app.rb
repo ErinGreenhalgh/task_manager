@@ -41,9 +41,12 @@ class TaskManagerApp < Sinatra::Base
 
   def task_manager
     if ENV['RACK_ENV'] == 'test'
-      database = YAML::Store.new('db/task_manager_test')
+      database = Sequel.postgres('task_manager_test')
+      #wont be looking at this file so dont need db/
+      # database = YAML::Store.new('db/task_manager_test')
     else
-      database = YAML::Store.new('db/task_manager')
+      database = Sequel.postgres('task_manager')
+      # database = YAML::Store.new('db/task_manager')
     end
     @task_manager ||= TaskManager.new(database)
   end

@@ -8,27 +8,28 @@ class TaskManager
   end
 
   def create(task)
-    database.transaction do
-      database['tasks'] ||= []
-      database['total'] ||= 0
-      database['total'] += 1
-      database['tasks'] << {"id" => database['total'], "title" => task[:title],
-      "description" => task[:description]}
-    end
+    table.insert(title: task[:title], description: task[:description])
+    #functionality for creating unique ids is built into sequel
   end
 
-  def raw_tasks
-    database.transaction do
-      database['tasks'] || []
-    end
+  def table
+    database.from(:tasks).order(:id)
   end
+
+  # def raw_tasks
+  #   database.transaction do
+  #     database['tasks'] || []
+  #   end
+  # end
+  #with sequql, table now represents all tasks
 
   def all
     raw_tasks.map { |data| Task.new(data)}
   end
 
   def raw_task(id)
-    raw_tasks.find { |task| task["id"] == id}
+    # raw_tasks.find { |task| task["id"] == id}
+    table.where(:id => id).to_a[0]
   end
 
   def find(id)
@@ -50,10 +51,11 @@ class TaskManager
   end
 
   def delete_all
-    database.transaction do
-      database['tasks'] = []
-      database['total'] = 0
-    end
+    # database.transaction do
+    #   database['tasks'] = []
+    #   database['total'] = 0
+    # end
+    
   end
 
 end
