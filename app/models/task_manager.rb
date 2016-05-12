@@ -25,7 +25,7 @@ class TaskManager
   #with sequql, table now represents all tasks
 
   def all
-    raw_tasks.map { |data| Task.new(data)}
+    table.to_a.map { |data| Task.new(data)}
   end
 
   def raw_task(id)
